@@ -1,4 +1,4 @@
-package domain;
+package controller;
 
 import service.AutorService;
 import service.EmprestimoService;
