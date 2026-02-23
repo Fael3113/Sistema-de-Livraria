@@ -1,6 +1,7 @@
 package controller;
 
 import service.AutorService;
+import service.ClienteService;
 import service.EmprestimoService;
 import service.LivroService;
 
@@ -10,17 +11,20 @@ public class Biblioteca {
 	private AutorService autorService;
 	private LivroService livroService;
 	private EmprestimoService emprestimoService;
+	private ClienteService clienteService;
 
 	public Biblioteca() {
 		this.autorService = new AutorService();
 		this.livroService = new LivroService();
-		this.emprestimoService = new EmprestimoService(livroService);
+		this.clienteService = new ClienteService();
+		this.emprestimoService = new EmprestimoService(livroService, clienteService);
 		cadastrarDados();
 	}
 
 	private void cadastrarDados() {
 		autorService.cadastrarDados();
 		livroService.cadastrarDados(autorService);
+		clienteService.cadastrarDados();
 		emprestimoService.cadastrarDados();
 	}
 
@@ -44,6 +48,14 @@ public class Biblioteca {
 		livroService.buscarPorTitulo();
 	}
 
+	public void adicionarCliente() {
+		clienteService.adicionarCliente();
+	}
+
+	public void historicoEmprestimos(){
+		emprestimoService.historicoEmprestimos();
+	}
+
 	public void menu() {
 		Scanner scanner = new Scanner(System.in);
 		int opcao;
@@ -55,10 +67,13 @@ public class Biblioteca {
 			System.out.println("3 - Adicionar Empréstimo");
 			System.out.println("4 - Devolver Livro");
 			System.out.println("5 - Buscar por Titulo");
-			System.out.println("6 - Listar tudo");
+			System.out.println("6 - Listar Tudo");
+			System.out.println("7 - Cadastrar Cliente");
+			System.out.println("8 - Lista de Emprestimo");
 			System.out.println("0 - Sair");
 			System.out.print("Escolha: ");
 			opcao = scanner.nextInt();
+			scanner.nextLine();
 
 			switch (opcao) {
 				case 1:
@@ -79,6 +94,12 @@ public class Biblioteca {
 				case 6:
 					System.out.println(this);
 					break;
+				case 7:
+					adicionarCliente();
+					break;
+				case 8:
+					historicoEmprestimos();
+					break;
 				case 0:
 					System.out.println("Saindo...");
 					break;
@@ -94,6 +115,7 @@ public class Biblioteca {
 		return "\nBiblioteca:" +
 				"\n Livros:" + livroService.getLivros() +
 				"\n Autores:" + autorService.getAutores() +
-				"\n Emprestimos:" + emprestimoService.getEmprestimos();
+				"\n Emprestimos:" + emprestimoService.getEmprestimos() +
+				"\n Clientes:" + clienteService.getClientes();
 	}
 }

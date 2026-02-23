@@ -1,6 +1,6 @@
 # Sistema de Livraria
 
-Sistema de gerenciamento de livraria desenvolvido em Java, permitindo o cadastro e controle de livros, autores e empréstimos.
+Sistema de gerenciamento de livraria desenvolvido em Java, permitindo o cadastro e controle de livros, clientes, autores e empréstimos.
 
 ## Estrutura do Projeto
 
@@ -13,11 +13,13 @@ src/
 ├── domain/
 │   ├── Livro.java
 │   ├── Autor.java
-│   └── Emprestimo.java
+│   ├── Emprestimo.java
+│   └── Cliente.java
 ├── service/
 │   ├── LivroService.java
 │   ├── AutorService.java
-│   └── EmprestimoService.java
+│   ├── EmprestimoService.java
+│   └── ClienteService.java
 └── Main.java
 ```
 
@@ -29,6 +31,8 @@ src/
 - Devolução de livros
 - Busca de livros por título
 - Listagem completa do acervo
+- Cadastrar clientes novos
+- Listagem de empréstimos
 
 ## Modelo de Dados
 
@@ -48,9 +52,14 @@ src/
 **Empréstimo**
 - `emprestimoId` — Identificador único (UUID)
 - `livro` — Objeto do tipo Livro
-- `nomeCliente` — Nome do cliente
+- `nomeCliente` — Objeto do tipo Cliente
 - `dataEmprestimo` — Data do empréstimo
 - `dataDevolucao` — Data de devolução (nula se ainda não devolvido)
+
+**Cliente**
+- `clienteId` - Identificador único (UUID)
+- `clienteNome`- Nome do cliente
+- `email` - Email do cliente
 
 ## Como executar
 
@@ -72,6 +81,8 @@ git clone https://github.com/Fael3113/Sistema-de-Livraria.git
 4 - Devolver Livro
 5 - Buscar livro por título
 6 - Listar tudo
+7 - Cadastrar Cliente
+8 - Lista de Emprestimo
 0 - Sair
 ```
 

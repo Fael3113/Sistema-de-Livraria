@@ -6,14 +6,14 @@ import java.util.UUID;
 public class Emprestimo {
 	private UUID emprestimoId;
 	private Livro livro;
-	private String nomeCliente;
+	private Cliente cliente;
 	private LocalDate dataEmprestimo;
 	private LocalDate dataDevolucao;
 
-	public Emprestimo(UUID emprestimoId, Livro livro, String nomeCliente, LocalDate dataEmprestimo, LocalDate dataDevolucao) {
+	public Emprestimo(UUID emprestimoId, Livro livro, Cliente cliente, LocalDate dataEmprestimo, LocalDate dataDevolucao) {
 		this.emprestimoId = emprestimoId;
 		this.livro = livro;
-		this.nomeCliente = nomeCliente;
+		this.cliente = cliente;
 		this.dataEmprestimo = dataEmprestimo;
 		this.dataDevolucao = dataDevolucao;
 	}
@@ -23,7 +23,7 @@ public class Emprestimo {
 		return "\n  Emprestimo:" +
 				"\n Id do emprestimo: " + emprestimoId +
 				"\n Nome do Livro: " + livro.getTitulo() +
-				"\n Nome do Cliente: " + nomeCliente +
+				"\n Nome do Cliente: " + cliente.getNomeCliente() +
 				"\n Data de Emprestimo: " + dataEmprestimo +
 				"\n Data de Devolucao: " + dataDevolucao;
 	}
@@ -44,12 +44,12 @@ public class Emprestimo {
 		this.livro = livro;
 	}
 
-	public String getNomeCliente() {
-		return nomeCliente;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setNomeCliente(String nomeCliente) {
-		this.nomeCliente = nomeCliente;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	public LocalDate getDataEmprestimo() {
