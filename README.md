@@ -8,7 +8,7 @@ Arquitetura em camadas
 
 ```
 src/
-├── service/
+├── controller/
 |   └── Biblioteca.java 
 ├── domain/
 │   ├── Livro.java
@@ -94,7 +94,7 @@ git clone https://github.com/Fael3113/Sistema-de-Livraria.git
 
 ## 📐 Arquitetura
 
-O projeto segue o padrão **Service Layer**, separando as responsabilidades:
+O projeto segue a arquitetura em camadas no padrão **Service Layer**, separando as responsabilidades (em escopo simplificado):
 
 - **domain** — Classes de modelo (entidades)
 - **service** — Regras de negócio e manipulação dos dados
